@@ -3,7 +3,7 @@ import cv2
 from openalpr import Alpr
 
 
-RTSP_SOURCE  = 'rtsp://face:Face12345@10.15.19.201:554/live.sdp'
+RTSP_SOURCE  = 'rtsp://127.0.0.1:8080/h264_ulaw.sdp'
 WINDOW_NAME  = 'openalpr'
 FRAME_SKIP   = 15
 
