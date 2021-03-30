@@ -23,7 +23,7 @@ fully compatible with debian buster
 
 Compatible Libs
 
-Python 2.7.3
-OpenCV 4.0
-Leptonica 1.80.0
-OPENALPR
+- Python 2.7.3
+- OpenCV 4.0
+- Leptonica 1.80.0
+- OPENALPR
