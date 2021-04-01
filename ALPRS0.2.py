@@ -1,7 +1,11 @@
 import numpy as np
 import cv2
 from openalpr import Alpr
-
+import gi
+import sys
+import serial
+import os
+import sqlite3
 
 RTSP_SOURCE  = 'rtsp://127.0.0.1:8080/h264_ulaw.sdp'
 WINDOW_NAME  = 'openalpr'
