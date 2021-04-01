@@ -32,5 +32,5 @@ Compatible Libs
 ----------------------------------------------------------------------------
 Other Third-party Libs
 
-GTK MVC Framework for SQlite3 : https://github.com/nowsecure/datagrid-gtk3
-Cairo
+- GTK MVC Framework for SQlite3 : https://github.com/nowsecure/datagrid-gtk3
+- Cairo
