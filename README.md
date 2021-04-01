@@ -28,3 +28,9 @@ Compatible Libs
 - Leptonica 1.80.0
 - Tesseract-ocr 3.04
 - OPENALPR
+
+----------------------------------------------------------------------------
+Other Third-party Libs
+
+GTK MVC Framework for SQlite3 : https://github.com/nowsecure/datagrid-gtk3
+Cairo
