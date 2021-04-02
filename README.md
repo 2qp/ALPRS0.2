@@ -14,7 +14,7 @@ compatibility to AMD64 x86_x64
 Simple GTK GUI
 
 output of plate extraction.
-check allowed number plates.
+check allowed number plates using SQLite3
 
 triggering arduino uno board upon allowed number plates.
 
