@@ -41,9 +41,20 @@ Using SQLite3 PySQL
 
 create a local db using sqlite and specify the path
 
---sh
-
+Connect DB in script.py
+```sh
 conn = sqlite3.connect('stu3.db')
 c = conn.cursor()
+```
 
---sh
+Specify DB Path and Tables in allowed.py
+
+```sh
+
+path = os.path.join(os.path.dirname(os.path.realpath(__file__)))
+db_path = os.path.join(path, 'stu3.db')
+
+data_source = SQLiteDataSource(
+    db_path, 'stu3', ensure_selected_column=True)
+
+```
