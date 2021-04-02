@@ -34,3 +34,10 @@ Other Third-party Libs
 
 - GTK MVC Framework for SQlite3 : https://github.com/nowsecure/datagrid-gtk3
 - Cairo
+
+----------------------------------------------------------------------------
+
+Using SQLite3 PySQL
+
+create a local db using sqlite and specify the path
+or use the stu3.db test database(contains sensitive information)
