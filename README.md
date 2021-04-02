@@ -40,4 +40,10 @@ Other Third-party Libs
 Using SQLite3 PySQL
 
 create a local db using sqlite and specify the path
-or use the stu3.db test database(contains sensitive information)
+
+--sh
+
+conn = sqlite3.connect('stu3.db')
+c = conn.cursor()
+
+--sh
