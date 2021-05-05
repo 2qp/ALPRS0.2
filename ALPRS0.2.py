@@ -6,10 +6,9 @@ import cv2
 from openalpr import Alpr
 import sys
 import serial
-import os
 import sqlite3
 import subprocess
-
+import os
 
 
 
@@ -79,7 +78,7 @@ class ButtonWindow(Gtk.Window):
     def on_button_clicked(self, button):
 		
 		#------
-		RTSP_SOURCE  = 'rtsp://192.168.8.107:8080/h264_ulaw.sdp'
+		RTSP_SOURCE  = 'rtsp://192.168.8.109:8080/h264_ulaw.sdp'
 		WINDOW_NAME  = 'ALPR System 0.1'
 		FRAME_SKIP   = 15
 		self.source_path.set_text(str(RTSP_SOURCE))
@@ -93,7 +92,7 @@ class ButtonWindow(Gtk.Window):
 
 
 		def main():
-			alpr = Alpr('lk', 'lk.conf', '/usr/local/share/openalpr/runtime_data')
+			alpr = Alpr('fr', 'fr.conf', '/usr/local/share/openalpr/runtime_data')
 			if not alpr.is_loaded():
 				print('Error loading OpenALPR')
 				sys.exit(1)
@@ -130,15 +129,17 @@ class ButtonWindow(Gtk.Window):
 				#cv2.imshow(WINDOW_NAME, frame)
 				#cv2.resizeWindow(WINDOW_NAME, frame, 256, 256)
 
-
+				
 
 				results = alpr.recognize_ndarray(frame)
 				for i, plate in enumerate(results['results']):
 					best_candidate = plate['candidates'][0]
 					
-					J = ('{:7s}'.format(best_candidate['plate'].upper(),best_candidate))
-						
-					rows = c.execute("select NP from stu3")
+					J = ('{}'.format(best_candidate['plate'].upper(),best_candidate))
+					print J
+					
+					rows = c.execute("select plate from NP")
+					conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
 					for row in rows:
 						if row[0] == str(J):
 							self.status_log.set_text(str(J))
@@ -153,6 +154,7 @@ class ButtonWindow(Gtk.Window):
 								
 					else:
 						print("Doesn't Match")
+						print(type(row[0]))
 
 
 
