@@ -35,6 +35,12 @@ Other Third-party Libs
 - GTK MVC Framework for SQlite3 : https://github.com/nowsecure/datagrid-gtk3
 - Cairo
 
+```sh
+sudo apt-get install python-gi-cairo
+pip install pycairo==1.16.2
+
+```
+
 ----------------------------------------------------------------------------
 
 Using SQLite3 PySQL
