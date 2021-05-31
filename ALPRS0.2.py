@@ -9,7 +9,7 @@ import serial
 import sqlite3
 import subprocess
 import os
-
+import datetime
 
 
 gi.require_version("Gtk", "3.0")
@@ -73,14 +73,21 @@ class ButtonWindow(Gtk.Window):
         #label_display.set_text("sdsd")
         
     def on_click_me_clicked(self, button):
-		subprocess.Popen(["python", "allowed.py"])
+		subprocess.Popen(["python", "allowed2.py"])
 
     def on_button_clicked(self, button):
+
+
+		arduino = serial.Serial('/dev/ttyACM0', 9600)
+		command = str(85)
+		arduino.write(command)
+		#reachedPos = str(arduino.readline())
+
 		
 		#------
-		RTSP_SOURCE  = 'rtsp://192.168.8.109:8080/h264_ulaw.sdp'
+		RTSP_SOURCE  = 'rtsp://192.168.8.102:8080/h264_ulaw.sdp'
 		WINDOW_NAME  = 'ALPR System 0.1'
-		FRAME_SKIP   = 15
+		FRAME_SKIP   = 30
 		self.source_path.set_text(str(RTSP_SOURCE))
 		
 
@@ -136,7 +143,7 @@ class ButtonWindow(Gtk.Window):
 					best_candidate = plate['candidates'][0]
 					
 					J = ('{}'.format(best_candidate['plate'].upper(),best_candidate))
-					print J
+					print str(J)
 					
 					rows = c.execute("select plate from NP")
 					conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
@@ -148,13 +155,23 @@ class ButtonWindow(Gtk.Window):
 							command = str(85)
 							arduino.write(command)
 							reachedPos = str(arduino.readline())
+							
+							ct = datetime.datetime.now()
+							
+							data_input = '''INSERT INTO logs(plate,entrytime,inside) VALUES(?,?,?);'''
+							boolean = 1
+							data_tuple = (J, ct, boolean)
+							c.execute(data_input, data_tuple)
+							conn.commit()
+							
+							print("------------------------")
 								
 								
 							
 								
-					else:
-						print("Doesn't Match")
-						print(type(row[0]))
+						else:
+							print("------------------------")
+							#print(type(row[0]))
 
 
 
@@ -178,7 +195,7 @@ class ButtonWindow(Gtk.Window):
 
 
     def on_open_clicked(self, button):
-        print('"Open" button was clicked')
+        subprocess.Popen(["python", "logs.py"])
 
     def on_close_clicked(self, button):
         print("Closing application")
