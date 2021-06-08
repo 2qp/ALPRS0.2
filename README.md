@@ -17,6 +17,18 @@ output of plate extraction.
 check allowed number plates using SQLite3
 
 triggering arduino uno board upon allowed number plates.
+----------------------------------------------------------------------------
+#Diagrams
+
+![IPDiagram2](https://user-images.githubusercontent.com/56475797/121151617-28b17200-c862-11eb-859d-be2922d5ff81.png)
+
+
+
+
+
+
+
+
 
 ----------------------------------------------------------------------------
 fully compatible with debian buster
