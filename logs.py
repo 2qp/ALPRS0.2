@@ -141,4 +141,4 @@ class WB_Window(gtk.Window):
 win = WB_Window()
 win.connect("delete-event",gtk.main_quit)
 win.show_all()
-gtk.main()
+gtk.main() 
